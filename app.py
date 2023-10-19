@@ -33,10 +33,13 @@ def get_team_records():
 
             team_record = team['leagueRecord']
 
+            team_dict['GP'] = 0
             team_dict['W'] = team_record['wins']
             team_dict['L'] = team_record['losses']
             team_dict['OTL'] = team_record['ot']
 
+            team_dict['GP'] = sum(team_record['wins'] + team_record['losses'] + team_record['ot'])
+            
             team_records = pd.concat([team_records,pd.DataFrame(team_dict,index=[0])],ignore_index=True)
 
     return team_records
@@ -81,6 +84,7 @@ with tab2:
 
             person_records_total = pd.DataFrame({
                 '':'Total',
+                'GP':person_records['GP'].sum(),
                 'W':person_records['W'].sum(),
                 'L':person_records['L'].sum(),
                 'OTL':person_records['OTL'].sum()

@@ -38,7 +38,7 @@ def get_team_records():
             team_dict['L'] = team_record['losses']
             team_dict['OTL'] = team_record['ot']
 
-            team_dict['GP'] = sum(team_record['wins'] + team_record['losses'] + team_record['ot'])
+            team_dict['GP'] = team_record['wins'] + team_record['losses'] + team_record['ot']
             
             team_records = pd.concat([team_records,pd.DataFrame(team_dict,index=[0])],ignore_index=True)
 

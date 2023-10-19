@@ -98,13 +98,22 @@ with tab2:
 
             total_score = person_records_total['W'].values[0]*2 + person_records_total['OTL'].values[0]*1
 
-            overall_scores_dict[name] = total_score
+        
+            overall_scores_dict[name] = [person_records['GP'].sum(),
+                                         total_score,
+                                         round(total_score/person_records['GP'].sum(),3)]
 
             col.divider()
 
 with tab1:
 
-    score_ranking = pd.DataFrame(overall_scores_dict,index=[0]).T.sort_values(0,ascending=False)
-    score_ranking.columns = ['Score']
+    score_ranking = pd.DataFrame(overall_scores_dict).T
+    score_ranking.columns = ['GP','Score','PPGR']
+
+    for col in ['GP','Score']:
+        score_ranking[col] = score_ranking[col].astype(int)
 
     st.dataframe(score_ranking)
+
+
+# %%

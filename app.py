@@ -100,8 +100,6 @@ with tab2:
 
             overall_scores_dict[name] = total_score
 
-            col.write('Total score : ' + str(total_score))
-
             col.divider()
 
 with tab1:

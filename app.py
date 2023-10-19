@@ -53,7 +53,7 @@ robbie_list = ['New Jersey Devils','Detroit Red Wings','Ottawa Senators','Vancou
 person_col_list = [[aaron_list,collin_list],[bryan_list,jonah_list],[chad_list,robbie_list]]
 person_name_list = [['Aaron','Collin'],['Bryan','Jonah'],['Chad','Robbie']]
 st.set_page_config(
-   page_title='NHL Scoring App',
+   page_title='Cole Caulfield 4 Prez',
    layout="wide",
 )
 

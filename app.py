@@ -37,6 +37,7 @@ def get_team_records():
             team_dict['W'] = team_record['wins']
             team_dict['L'] = team_record['losses']
             team_dict['OTL'] = team_record['ot']
+            team_dict['P'] = team_record['wins']*2 + team_record['ot']*1
 
             team_dict['GP'] = team_record['wins'] + team_record['losses'] + team_record['ot']
             
@@ -87,7 +88,8 @@ with tab2:
                 'GP':person_records['GP'].sum(),
                 'W':person_records['W'].sum(),
                 'L':person_records['L'].sum(),
-                'OTL':person_records['OTL'].sum()
+                'OTL':person_records['OTL'].sum(),
+                'P':person_records['P'].sum()
             },index=[0])
 
             col.dataframe(person_records,use_container_width=True,hide_index=True)

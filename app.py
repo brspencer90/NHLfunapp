@@ -79,7 +79,7 @@ with tab2:
             person = person_list[j]
             name = name_list[j]
             
-            col.write(name + "'s Team")
+            col.write(name + "'s Riding Chad's Dick Division")
             
             person_records = team_records[team_records['Team Name'].isin(person)]
 

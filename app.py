@@ -11,7 +11,7 @@ import streamlit as st
 teamsURL = 'https://statsapi.web.nhl.com/api/v1/teams'
 scheduleURL = 'https://statsapi.web.nhl.com/api/v1/schedule'
 gameURL = 'https://statsapi.web.nhl.com/api/v1/game'
-standingsURL = 'https://statsapi.web.nhl.com/api/v1/standings'
+standingsURL = 'https://api-web.nhle.com/v1/standings/now'
 
 def get_nhl_dataset(URL):
     response = r.get(URL)
@@ -19,29 +19,24 @@ def get_nhl_dataset(URL):
     return JSON
 
 def get_team_records():
-    division_records = get_nhl_dataset(standingsURL)['records']
+    team_list = get_nhl_dataset(standingsURL)['standings']
 
     team_records = pd.DataFrame()
 
-    for div in division_records:
-        team_list = div['teamRecords']
-        
+    for team in team_list:
         team_dict = {}
 
-        for team in team_list:
-            team_dict['Team Name'] = team['team']['name']
+        team_dict['Team Name'] = team['teamName']['default']
 
-            team_record = team['leagueRecord']
+        team_dict['GP'] = 0
+        team_dict['W'] = team['wins']
+        team_dict['L'] = team['losses']
+        team_dict['OTL'] = team['otLosses']
+        team_dict['P'] = team['wins']*2 + team['otLosses']*1
 
-            team_dict['GP'] = 0
-            team_dict['W'] = team_record['wins']
-            team_dict['L'] = team_record['losses']
-            team_dict['OTL'] = team_record['ot']
-            team_dict['P'] = team_record['wins']*2 + team_record['ot']*1
-
-            team_dict['GP'] = team_record['wins'] + team_record['losses'] + team_record['ot']
-            
-            team_records = pd.concat([team_records,pd.DataFrame(team_dict,index=[0])],ignore_index=True)
+        team_dict['GP'] = team['wins'] + team['losses'] + team['otLosses']
+        
+        team_records = pd.concat([team_records,pd.DataFrame(team_dict,index=[0])],ignore_index=True)
 
     return team_records
 # %% 

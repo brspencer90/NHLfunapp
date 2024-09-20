@@ -2,6 +2,8 @@
 import requests as r
 import pandas as pd
 import streamlit as st
+
+from constants import Constants as c
 # %%
 # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # NHL API # # # # # # # # # #
@@ -42,12 +44,21 @@ def get_team_records():
 # %% 
 team_records = get_team_records()
 
-aaron_list = ['Buffalo Sabres','Carolina Hurricanes','Minnesota Wild','Nashville Predators','Washington Capitals']
-bryan_list = ['Arizona Coyotes','Colorado Avalanche','New York Rangers','Seattle Kraken','Tampa Bay Lightning']
-chad_list = ['Edmonton Oilers','Los Angeles Kings','New York Islanders','Philadelphia Flyers','Toronto Maple Leafs']
-collin_list = ['Boston Bruins','Calgary Flames','Florida Panthers','St. Louis Blues','Vegas Golden Knights']
-jonah_list = ['Chicago Blackhawks','Columbus Blue Jackets','Dallas Stars','Pittsburgh Penguins','Winnipeg Jets']
-robbie_list = ['New Jersey Devils','Detroit Red Wings','Ottawa Senators','Vancouver Canucks','Montréal Canadiens']
+aaron_list = ['BOS','TBL','MIN','CGY','ANA']
+bryan_list = ['EDM','TOR','WPG','PHI','OTT']
+chad_list = ['VAN','VGK','UTA','BUF','NJD']
+collin_list = ['FLA','NSH','DET','NYI','STL']
+jonah_list = ['COL','NYR','WSH','CBJ','SEA']
+robbie_list = ['CAR','DAL','LAK','PIT','MTL']
+
+team_dict = c.team_dict
+
+aaron_list_full = [team_dict[abr] for abr in aaron_list]
+bryan_list_full = [team_dict[abr] for abr in bryan_list]
+chad_list_full = [team_dict[abr] for abr in chad_list]
+collin_list_full = [team_dict[abr] for abr in collin_list]
+jonah_list_full = [team_dict[abr] for abr in jonah_list]
+robbie_list_full = [team_dict[abr] for abr in robbie_list]
 
 person_col_list = [[aaron_list,collin_list],[bryan_list,jonah_list],[chad_list,robbie_list]]
 person_name_list = [['Aaron','Collin'],['Bryan','Jonah'],['Chad','Robbie']]

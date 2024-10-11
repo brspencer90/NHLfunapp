@@ -79,15 +79,16 @@ with tab2:
     for i in range(0,3):
         col = col_list[i]
 
-        person_list = person_col_list[i]
+        team_list = person_col_list[i]
         name_list = person_name_list[i]
         for j in range(0,2):
-            person = person_list[j]
+            teams_abbr = team_list[j]
+            teams = [team_dict[abr] for abr in teams_abbr]
             name = name_list[j]
             
             col.write(name + "'s Riding Chad's Dick Division")
             
-            person_records = team_records[team_records['Team Name'].isin(person)]
+            person_records = team_records[team_records['Team Name'].isin(teams)]
 
             person_records_total = pd.DataFrame({
                 '':'Total',

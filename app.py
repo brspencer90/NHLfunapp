@@ -44,12 +44,13 @@ def get_team_records():
 # %% 
 team_records = get_team_records()
 
-aaron_list = ['BOS','TBL','MIN','CGY','ANA']
-bryan_list = ['EDM','TOR','WPG','PHI','OTT']
-chad_list = ['VAN','VGK','UTA','BUF','NJD']
-collin_list = ['FLA','NSH','DET','NYI','STL']
-jonah_list = ['COL','NYR','WSH','CBJ','SEA']
-robbie_list = ['CAR','DAL','LAK','PIT','MTL']
+aaron_list = ['VGK','STL','LAK','CHI'] #['BOS','TBL','MIN','CGY','ANA']
+bryan_list = ['DAL','NJD','OTT','VAN'] #['EDM','TOR','WPG','PHI','OTT']
+chad_list = ['WPG','TOR','CGY','DET'] #['VAN','VGK','UTA','BUF','NJD']
+collin_list = ['EDM','CAR','BOS','PIT'] #['FLA','NSH','DET','NYI','STL']
+jonah_list = ['TBL','NYR','MTL','SJS'] #['COL','NYR','WSH','CBJ','SEA']
+robbie_list = ['FLA','WSH','MIN','CBJ'] #['CAR','DAL','LAK','PIT','MTL']
+emily_list = ['COL','UTA','ANA','SEA']
 
 team_dict = c.team_dict
 
@@ -59,9 +60,10 @@ chad_list_full = [team_dict[abr] for abr in chad_list]
 collin_list_full = [team_dict[abr] for abr in collin_list]
 jonah_list_full = [team_dict[abr] for abr in jonah_list]
 robbie_list_full = [team_dict[abr] for abr in robbie_list]
+emily_list_full = [team_dict[abr] for abr in emily_list]
 
-person_col_list = [[aaron_list,collin_list],[bryan_list,jonah_list],[chad_list,robbie_list]]
-person_name_list = [['Aaron','Collin'],['Bryan','Jonah'],['Chad','Robbie']]
+person_col_list = [[aaron_list,collin_list,emily_list],[bryan_list,jonah_list],[chad_list,robbie_list],[emily_list]]
+person_name_list = [['Aaron','Collin','Emily'],['Bryan','Jonah'],['Chad','Robbie']]
 st.set_page_config(
    page_title='Cole Caulfield 4 Prez',
    layout="wide",
@@ -81,7 +83,7 @@ with tab2:
 
         team_list = person_col_list[i]
         name_list = person_name_list[i]
-        for j in range(0,2):
+        for j in range(0,len(team_list)):
             teams_abbr = team_list[j]
             teams = [team_dict[abr] for abr in teams_abbr]
             name = name_list[j]

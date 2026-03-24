@@ -27,7 +27,7 @@ class Constants:
         'STL':'St. Louis Blues',
         'TBL':'Tampa Bay Lightning',
         'TOR':'Toronto Maple Leafs',
-        'UTA':'Utah Hockey Club',
+        'UTA':'Utah Mammoth',
         'VAN':'Vancouver Canucks',
         'VGK':'Vegas Golden Knights',
         'WSH':'Washington Capitals',

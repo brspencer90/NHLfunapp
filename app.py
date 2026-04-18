@@ -143,7 +143,7 @@ with tab1:
     for col in ['GP','Score']:
         score_ranking[col] = score_ranking[col].astype(int)
 
-    st.dataframe(score_ranking,width=400)
+    st.dataframe(score_ranking.sort_values('Score',ascending=False),width=400)
 
 
 # %%
